@@ -6,25 +6,22 @@
 		ompMarcBlock
 	</h2>
 	<hr>
+
+
+
+{$doiUrl}
+
+
+
 	
 {assign var="authors" value=$publication->getData('authors')}
 
-{* Verifica se existem autores *}
+{* Obter Primeiro Autor *}
 {if $authors|@count > 0}
-
-    {* Obtém o primeiro autor *}
     {assign var="firstAuthor" value=$authors[0]}
-
-    {* Obtém nome e sobrenome do primeiro autor *}
     {assign var="authorName" value=$firstAuthor->getFullName()|escape}
-
-    {* Obtém o ORCID do primeiro autor, se disponível *}
     {assign var="orcid" value=$firstAuthor->getOrcid()|default:'OrCiD'}
-
-    {* Obtém a afiliação do primeiro autor, se disponível *}
     {assign var="affiliation" value=$firstAuthor->getLocalizedAffiliation()|default:'aFiLiAçÃo'}
-    
-
 {/if}
 
 	<hr>
