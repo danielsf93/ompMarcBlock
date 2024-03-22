@@ -23,8 +23,6 @@
 
     {* Obtém a afiliação do primeiro autor, se disponível *}
     {assign var="affiliation" value=$firstAuthor->getLocalizedAffiliation()|default:'aFiLiAçÃo'}
-
-    {* Formata a informação do primeiro autor *}
     
 
 {/if}
@@ -37,9 +35,14 @@
 	<b>040=</b><u>\\$aUSP/ABCD</u><br>
 	<b>041=</b><u>0\$apor</u><br>
 	<b>044=</b><u>\\$abl</u><br>
-	<b>100=</b>1\$a'{$authorName}, {$orcid}, {$affiliation}'<br>	<b>245=</b>12$a{$publication->getLocalizedFullTitle()|escape}$h[recurso eletrônico]<br>
+	<b>100=</b>1\$a'{$authorName}, {$orcid}, {$affiliation}'<br>	
+    <b>245=</b>12$a{$publication->getLocalizedFullTitle()|escape}$h[recurso eletrônico]<br>
 	<b>260=</b>\\$aLocal, $b{$publication->getLocalizedData('copyrightHolder')}$c{$publication->getData('copyrightYear')}<br>
-	<b>490=</b>$a{$series->getLocalizedFullTitle()} $v{$publication->getData('seriesPosition')}<br>
+
+{if $series}
+    <b>490=</b>$a{$series->getLocalizedFullTitle()} $v{$publication->getData('seriesPosition')}<br>
+{/if}
+
 	<b>500=</b>\\$aDisponível em: {$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: dd.mm.yyyy<br>
 	<b>700=</b>Demais autores<br>
 	<b>856=</b>4\$zClicar sobre o botão para acesso ao texto completo$u Link DOI $3DOI<br>
