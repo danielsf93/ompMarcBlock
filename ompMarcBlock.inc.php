@@ -1,16 +1,8 @@
 <?php
 
 /**
- * @file plugins/blocks/developedBy/ompMarcBlock.inc.php
- *
- * Copyright (c) 2014-2021 Simon Fraser University
- * Copyright (c) 2003-2021 John Willinsky
- * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
- *
- * @class ompMarcBlock
- * @ingroup plugins_blocks_developedBy
- *
- * @brief Class for "developed by" block plugin
+ * @file plugins/blocks/ompMarcBlock/ompMarcBlock.inc.php
+
  */
 
 
@@ -49,4 +41,19 @@ class ompMarcBlock extends BlockPlugin {
 	function getDescription() {
 		return __('ompMarcBlock');
 	}
+
+	public function getContents($templateMgr, $request = null)
+    {
+
+		
+		// Chama a função para obter o número de revistas.
+        $filomena = 'a cachorra mais doida do 21';
+      
+        $templateMgr->assign([
+        
+        'filomena' =>$filomena,
+    ]);
+    
+    return parent::getContents($templateMgr, $request);
+    }
 }

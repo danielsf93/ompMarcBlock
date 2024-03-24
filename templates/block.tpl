@@ -1,10 +1,19 @@
 {if isset($publication)}
-    <div class="pkp_block block_developed_by">
+    <div class="pkp_block block_ompmarckblock">
         <h2>
             ompMarcBlock
         </h2>
+        {$filomena}
         <hr>
-        {$doiUrl}
+      
+      
+
+									
+									
+									
+								
+							
+
         {assign var="authors" value=$publication->getData('authors')}
         {* Obter Primeiro Autor *}
         {if $authors|@count > 0}
@@ -17,7 +26,7 @@
         <b>005=</b>data<br>
         <b>008=</b><u>^^^^^^s2023^^^^bl^^^^^^^^^^^^000^0^por^d</u><br>
         <b>020=</b>\\$aISBN<br>
-        <b>024=</b>7\$aDOI$2DOI<br>
+        <b>024=</b>7\$a{$publication->getStoredPubId('doi')|escape}$2DOI<br>
         <b>040=</b><u>\\$aUSP/ABCD</u><br>
         <b>041=</b><u>0\$apor</u><br>
         <b>044=</b><u>\\$abl</u><br>
