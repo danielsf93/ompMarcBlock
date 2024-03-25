@@ -33,11 +33,6 @@
             {/while}
         {/foreach}
         
-       					
-									
-									
-								
-							
 {* Obter Primeiro Autor *}
         {assign var="authors" value=$publication->getData('authors')}
         {if $authors|@count > 0}
@@ -72,5 +67,39 @@
         <b>856=</b>41$zClicar sobre o botão para acesso ao texto completo$u Link PDF $3Portal de Livros Abertos da USP<br>
         <b>945=</b><u>\\$aP$bMONOGRAFIA/LIVRO$c06$j2023$lNACIONAL</u><br>
         <hr>
+
+teste<br>
+{* Organizando a Informação *}
+
+    {assign var="zeroZeroCinco" value="<b>005=</b>data<br>"}
+
+
+
+
+
+
+
+
+    {assign var="zeroDoisZero" value="<b> 020=</b>\\\\$a{if $isbn|trim}{$isbn}{else}iSbN{/if}"}
+        
+        
+
+
+
+{* Chamando a informação*}
+        
+        {$zeroZeroCinco}
+        
+        {$zeroDoisZero}
+
+
+
+
+
+
+
+
+<hr>
+
     </div>
 {/if}
