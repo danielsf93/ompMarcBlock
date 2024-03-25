@@ -73,24 +73,61 @@ teste<br>
 
     {assign var="zeroZeroCinco" value="<b>005=</b>data<br>"}
 
-
-
-
-
-
-
+    {assign var="zeroZeroOito" value="<b>008=</b><u>^^^^^^s2023^^^^bl^^^^^^^^^^^^000^0^por^d</u><br>"}
 
     {assign var="zeroDoisZero" value="<b> 020=</b>\\\\$a{if $isbn|trim}{$isbn}{else}iSbN{/if}"}
         
-        
+    {assign var="zeroDoisQuatro" value="<b>024=</b>7\$a{$publication->getStoredPubId('doi')|escape}$2DOI<br>"}
+
+    {assign var="zeroQuatroZero" value="<b>040=</b><u>\\$aUSP/ABCD</u><br>"}
+
+    {assign var="zeroQuatroUm" value="<b>041=</b><u>0\$apor</u><br>"}
+
+    {assign var="zeroQuatroQuatro" value="<b>044=</b><u>\$abl</u><br>"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+
+    {assign var="x" value="x"}
+    
+    
+
+
+
+
+
+
 
 
 
 {* Chamando a informação*}
         
         {$zeroZeroCinco}
-        
+        {$zeroZeroOito}
         {$zeroDoisZero}
+        {$zeroDoisQuatro}
+        {$zeroQuatroZero}
+        {$zeroQuatroUm}
+        {$zeroQuatroQuatro}
+        {$x}
+        {$x}
+        {$x}
+        {$x}
+        {$x}
+        {$x}
+        {$x}
+        {$x}
 
 
 
