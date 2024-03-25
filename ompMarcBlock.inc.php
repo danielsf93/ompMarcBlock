@@ -47,7 +47,7 @@ class ompMarcBlock extends BlockPlugin {
 
 		
 		// Chama a função para obter o número de revistas.
-        $filomena = 'a cachorra mais doida do 21';
+        $filomena = 'Info por templateMgr';
       
         $templateMgr->assign([
         
