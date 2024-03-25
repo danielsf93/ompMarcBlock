@@ -41,6 +41,7 @@ class ompMarcBlock extends BlockPlugin {
 	function getDescription() {
 		return __('ompMarcBlock');
 	}
+	
 
 	public function getContents($templateMgr, $request = null)
     {

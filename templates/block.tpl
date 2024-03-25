@@ -7,8 +7,14 @@
         TESTES AQUI:<br>
        inicio
 
+<b>
+
+{$publication->getData('pub-id::publisher-id')}
 
 
+
+
+</b>
         fim
         <hr>
       
@@ -68,16 +74,7 @@
 
     {assign var="noveQuatroCinco" value="<b>945=</b><u> +aP +bMONOGRAFIA/LIVRO$c06$j2023$lNACIONAL</u><br>"}
     
-    
-
-
-
-
-
-
-
-
-
+ 
 {* Chamando a informação*}
         
         {$zeroZeroCinco}
@@ -97,13 +94,6 @@
         {$oitoCincoMeiaA}
         {$oitoCincoMeiaB}
         {$noveQuatroCinco}
-
-
-
-
-
-
-
 
 <hr>
 
