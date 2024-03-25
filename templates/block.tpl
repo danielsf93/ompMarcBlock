@@ -97,5 +97,32 @@
 
 <hr>
 
-    </div>
+  
+    <button id="downloadButton" class="botao">Baixar Arquivo MARC</button>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var downloadButton = document.getElementById('downloadButton');
+        downloadButton.addEventListener('click', function() {
+var text = "{$umZeroZero|escape:'javascript'}, {$doisQuatroCinco|escape:'javascript'}, {$cincoZeroZero|escape:'javascript'}";
+            var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
+
+            var blob = new Blob([text], { type: 'text/plain' });
+            if (window.navigator.msSaveOrOpenBlob) {
+                window.navigator.msSaveBlob(blob, fileName);
+            } else {
+                var elem = window.document.createElement('a');
+                elem.href = window.URL.createObjectURL(blob);
+                elem.download = fileName;
+                document.body.appendChild(elem);
+                elem.click();
+                document.body.removeChild(elem);
+            }
+        });
+    });
+</script>
+
+</div>
+
 {/if}
