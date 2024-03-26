@@ -31,16 +31,6 @@
             {/while}
         {/foreach}
         
-{* Obter Primeiro Autor *}
-        {assign var="authors" value=$publication->getData('authors')}
-        {if $authors|@count > 0}
-            {assign var="firstAuthor" value=$authors[0]}
-            {assign var="authorName" value=$firstAuthor->getFullName()|escape}
-            {assign var="orcid" value=$firstAuthor->getOrcid()|default:'OrCiD'}
-            {assign var="affiliation" value=$firstAuthor->getLocalizedAffiliation()|default:'aFiLiAçÃo'}
-        {/if}
-
-
 
 {* Organizando a Informação *}
 
@@ -59,7 +49,43 @@
 
     {assign var="zeroQuatroQuatro" value="abl1 "}
 
-    {assign var="umZeroZero" value="AAAA1\$a'{$authorName}, {$orcid}, {$affiliation}'AAAA"}
+
+
+
+
+{* Obter Primeiro Autor *}
+     {* Obter Primeiro Autor *}
+{assign var="authors" value=$publication->getData('authors')}
+{if $authors|@count > 0}
+    {assign var="firstAuthor" value=$authors[0]}
+    {assign var="givenName" value=$firstAuthor->getLocalizedGivenName()|escape}
+    {assign var="surname" value=$firstAuthor->getLocalizedFamilyName()|escape}
+    {assign var="orcid" value=$firstAuthor->getOrcid()|default:'OrCiD'}
+    {assign var="affiliation" value=$firstAuthor->getLocalizedAffiliation()|default:''}
+    {assign var="locale" value=$firstAuthor->getCountryLocalized()|escape}
+
+    {if $affiliation|strstr:'Universidade de São Paulo'}
+        {if $orcid}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}0{$orcid}4org5(*)"}
+        {else}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}0 4org5(*)"}
+        {/if}
+    {else}
+        {if $orcid && $affiliation}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}0{$orcid}5(*)7INT8{$affiliation}9{$locale}"}
+        {elseif $orcid}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}0{$orcid}5(*)7INT9{$locale}"}
+        {elseif $affiliation}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}7INT8{$affiliation}9{$locale}"}
+        {else}
+            {assign var="umZeroZero" value="a{$surname}, {$givenName}5(*)9{$locale}"}
+        {/if}
+    {/if}
+{/if}
+
+
+
+
 
     {assign var="doisQuatroCinco" value="10a{$publication->getLocalizedFullTitle()|escape}h[recurso eletrônico]  "}
 
