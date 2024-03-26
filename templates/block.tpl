@@ -44,56 +44,57 @@
 
 {* Organizando a Informação *}
 
-    {assign var="zeroZeroCinco" value="<b>005=</b>data<br>"}
+    {assign var="dataFormatada" value=$smarty.now|date_format:"%Y%m%d%H%M%S.0"}
+    {assign var="zeroZeroCinco" value="$dataFormatada"}
 
-    {assign var="zeroZeroOito" value="<b>008=</b><u>^^^^^^s2023^^^^bl^^^^^^^^^^^^000^0^por^d</u><br>"}
+    {assign var="zeroZeroOito" value="      s2023    bl            000 0 por d"}
 
-    {assign var="zeroDoisZero" value="<b> 020=</b>\\\\$a{if $isbn|trim}{$isbn}{else}iSbN{/if}"}
+    {assign var="zeroDoisZero" value="  a{if $isbn|trim}{$isbn}{else}iSbN{/if}7 "}
         
-    {assign var="zeroDoisQuatro" value="<b>024=</b>7\$a{$publication->getStoredPubId('doi')|escape}$2DOI<br>"}
+    {assign var="zeroDoisQuatro" value="7\$a{$publication->getStoredPubId('doi')|escape}$2DOI"}
 
-    {assign var="zeroQuatroZero" value="<b>040=</b><u>\\$aUSP/ABCD</u><br>"}
+    {assign var="zeroQuatroZero" value="\\$aUSP/ABCD"}
 
-    {assign var="zeroQuatroUm" value="<b>041=</b><u>0\$apor</u><br>"}
+    {assign var="zeroQuatroUm" value="0\$apor"}
 
-    {assign var="zeroQuatroQuatro" value="<b>044=</b><u>\$abl</u><br>"}
+    {assign var="zeroQuatroQuatro" value="\$abl"}
 
-    {assign var="umZeroZero" value="<b>100=</b>1\$a'{$authorName}, {$orcid}, {$affiliation}'<br>"}
+    {assign var="umZeroZero" value="1\$a'{$authorName}, {$orcid}, {$affiliation}'"}
 
-    {assign var="doisQuatroCinco" value="<b>245=</b>12$a{$publication->getLocalizedFullTitle()|escape}$h[recurso eletrônico]<br>"}
+    {assign var="doisQuatroCinco" value="12$a{$publication->getLocalizedFullTitle()|escape}$h[recurso eletrônico]"}
 
-    {assign var="doisMeiaZero" value="<b>260=</b>\$aLocal, $b{$publication->getLocalizedData('copyrightHolder')}$c{$publication->getData('copyrightYear')}<br>"}
+    {assign var="doisMeiaZero" value="\$aLocal, $b{$publication->getLocalizedData('copyrightHolder')}$c{$publication->getData('copyrightYear')}"}
 
-    {assign var="quatroNoveZero" value="{if $series}<b>490=</b>$a{$series->getLocalizedFullTitle()} $v{$publication->getData('seriesPosition')}<br>{/if}"}
+    {assign var="quatroNoveZero" value="{if $series}$a{$series->getLocalizedFullTitle()} $v{$publication->getData('seriesPosition')}{/if}"}
 
-    {assign var="cincoZeroZero" value="<b>500=</b>\$aDisponível em: {$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}<br>"}
+    {assign var="cincoZeroZero" value="\$aDisponível em: {$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
 
-    {assign var="oitoCincoMeiaA" value="<b>856=</b>4\$zClicar sobre o botão para acesso ao texto completo$u{$publication->getStoredPubId('doi')|escape}$3DOI<br>"}
+    {assign var="oitoCincoMeiaA" value="4\$zClicar sobre o botão para acesso ao texto completo$u{$publication->getStoredPubId('doi')|escape}$3DOI"}
 
-    {assign var="oitoCincoMeiaB" value="<b>856=</b>41$zClicar sobre o botão para acesso ao texto completo$u Link PDF $3Portal de Livros Abertos da USP<br>"}
+    {assign var="oitoCincoMeiaB" value="41$zClicar sobre o botão para acesso ao texto completo$u Link PDF $3Portal de Livros Abertos da USP"}
 
-    {assign var="noveQuatroCinco" value="<b>945=</b><u> +aP +bMONOGRAFIA/LIVRO$c06$j2023$lNACIONAL</u><br>"}
+    {assign var="noveQuatroCinco" value=" +aP +bMONOGRAFIA/LIVRO$c06$j2023$lNACIONAL"}
     
  
 {* Chamando a informação*}
         
-        {$zeroZeroCinco}
-        {$zeroZeroOito}
-        {$zeroDoisZero}
-        {$zeroDoisQuatro}
-        {$zeroQuatroZero}
-        {$zeroQuatroUm}
-        {$zeroQuatroQuatro}
-        {$umZeroZero}
-        {$doisQuatroCinco}
-        {$doisMeiaZero}
+        <b>005=</b>{$zeroZeroCinco}<br>
+        <b>008=</b>{$zeroZeroOito}<br>
+        <b>020=</b>{$zeroDoisZero}<br>
+        <b>024=</b>{$zeroDoisQuatro}<br>
+        <b>040=</b>{$zeroQuatroZero}<br>
+        <b>041=</b>{$zeroQuatroUm}<br>
+        <b>044=</b>{$zeroQuatroQuatro}<br>
+        <b>100=</b>{$umZeroZero}<br>
+        <b>245=</b>{$doisQuatroCinco}<br>
+        <b>260=</b>{$doisMeiaZero}<br>
         
-        {$quatroNoveZero}
+        <b>490=</b>{$quatroNoveZero}<br>
         
-        {$cincoZeroZero}
-        {$oitoCincoMeiaA}
-        {$oitoCincoMeiaB}
-        {$noveQuatroCinco}
+        <b>500=</b>{$cincoZeroZero}<br>
+        <b>856=</b>{$oitoCincoMeiaA}<br>
+        <b>856=</b>{$oitoCincoMeiaB}<br>
+        <b>945=</b>{$noveQuatroCinco}<br>
 
 <hr>
 
@@ -105,7 +106,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var downloadButton = document.getElementById('downloadButton');
         downloadButton.addEventListener('click', function() {
-var text = "{$umZeroZero|escape:'javascript'}, {$doisQuatroCinco|escape:'javascript'}, {$cincoZeroZero|escape:'javascript'}";
+var text = "{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";
             var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
 
             var blob = new Blob([text], { type: 'text/plain' });
