@@ -51,29 +51,29 @@
 
     {assign var="zeroDoisZero" value="  a{if $isbn|trim}{$isbn}{else}iSbN{/if}7 "}
         
-    {assign var="zeroDoisQuatro" value="7\$a{$publication->getStoredPubId('doi')|escape}$2DOI"}
+    {assign var="zeroDoisQuatro" value="a{$publication->getStoredPubId('doi')|escape}2DOI"}
 
-    {assign var="zeroQuatroZero" value="\\$aUSP/ABCD"}
+    {assign var="zeroQuatroZero" value="  aUSP/ABCD0 "}
 
-    {assign var="zeroQuatroUm" value="0\$apor"}
+    {assign var="zeroQuatroUm" value="apor  "}
 
-    {assign var="zeroQuatroQuatro" value="\$abl"}
+    {assign var="zeroQuatroQuatro" value="abl1 "}
 
-    {assign var="umZeroZero" value="1\$a'{$authorName}, {$orcid}, {$affiliation}'"}
+    {assign var="umZeroZero" value="AAAA1\$a'{$authorName}, {$orcid}, {$affiliation}'AAAA"}
 
-    {assign var="doisQuatroCinco" value="12$a{$publication->getLocalizedFullTitle()|escape}$h[recurso eletrônico]"}
+    {assign var="doisQuatroCinco" value="10a{$publication->getLocalizedFullTitle()|escape}h[recurso eletrônico]  "}
 
-    {assign var="doisMeiaZero" value="\$aLocal, $b{$publication->getLocalizedData('copyrightHolder')}$c{$publication->getData('copyrightYear')}"}
+    {assign var="doisMeiaZero" value="a LOCALb{$publication->getLocalizedData('copyrightHolder')}c{$publication->getData('copyrightYear')}0 "}
 
-    {assign var="quatroNoveZero" value="{if $series}$a{$series->getLocalizedFullTitle()} $v{$publication->getData('seriesPosition')}{/if}"}
+    {assign var="quatroNoveZero" value="{if $series}a {$series->getLocalizedFullTitle()}v {$publication->getData('seriesPosition')}{/if}  "}
 
-    {assign var="cincoZeroZero" value="\$aDisponível em: {$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
+    {assign var="cincoZeroZero" value="aDisponível em: http://{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
 
-    {assign var="oitoCincoMeiaA" value="4\$zClicar sobre o botão para acesso ao texto completo$u{$publication->getStoredPubId('doi')|escape}$3DOI"}
+    {assign var="oitoCincoMeiaA" value="4 zClicar sobre o botão para acesso ao texto completouhttps://doi.org/{$publication->getStoredPubId('doi')|escape}3DOI"}
 
-    {assign var="oitoCincoMeiaB" value="41$zClicar sobre o botão para acesso ao texto completo$u Link PDF $3Portal de Livros Abertos da USP"}
+    {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouLINK PDF3Portal de Livros Abertos da USP  "}
 
-    {assign var="noveQuatroCinco" value=" +aP +bMONOGRAFIA/LIVRO$c06$j2023$lNACIONAL"}
+    {assign var="noveQuatroCinco" value="aPbMONOGRAFIA/LIVROc06j2023lNACIONAL"}
     
  
 {* Chamando a informação*}
