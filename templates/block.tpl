@@ -50,8 +50,6 @@
     {assign var="zeroQuatroQuatro" value="abl1 "}
 
 
-
-
      {* Obter Primeiro Autor *}
 {assign var="authors" value=$publication->getData('authors')}
 {if $authors|@count > 0}
@@ -82,9 +80,6 @@
 {/if}
 
 
-
-
-
     {assign var="doisQuatroCinco" value="10a{$publication->getLocalizedFullTitle()|escape}h[recurso eletrônico]  "}
 
     {assign var="doisMeiaZero" value="a LOCALb{$publication->getLocalizedData('copyrightHolder')}c{$publication->getData('copyrightYear')}0 "}
@@ -93,6 +88,51 @@
 
     {assign var="cincoZeroZero" value="aDisponível em: http://{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
 
+        
+
+
+
+{* Demais autores *}
+{assign var="additionalAuthors" value=[]}
+{foreach $authors as $index => $author}
+    {if $index != 0}
+        {assign var="additionalAuthors" value=array_merge($additionalAuthors, [$author])}
+    {/if}
+{/foreach}
+
+{assign var="additionalAuthorsExport" value=""}
+
+{foreach $additionalAuthors as $additionalAuthor}
+    {assign var="givenName" value=$additionalAuthor->getLocalizedGivenName()|escape}
+    {assign var="surname" value=$additionalAuthor->getLocalizedFamilyName()|escape}
+    {assign var="orcid" value=$additionalAuthor->getOrcid()|default:''}
+    {assign var="affiliation" value=$additionalAuthor->getLocalizedAffiliation()|default:''}
+
+    {assign var="authorExportString" value="1 a{$surname}, {$givenName}"} 
+
+    {if $orcid}
+        {assign var="authorExportString" value="$authorExportString0{$orcid}"}
+    {else}
+        {assign var="authorExportString" value="$authorExportString0 "} 
+    {/if}
+
+    {assign var="authorExportString" value="$authorExportString4org"} 
+
+    {if $affiliation}
+        {assign var="authorExportString" value="$authorExportString8{$affiliation}"} 
+    {/if}
+
+    {assign var="additionalAuthorsExport" value="$additionalAuthorsExport$authorExportString"} 
+{/foreach}
+
+
+
+
+
+
+
+
+    
     {assign var="oitoCincoMeiaA" value="4 zClicar sobre o botão para acesso ao texto completouhttps://doi.org/{$publication->getStoredPubId('doi')|escape}3DOI"}
 
     {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouLINK PDF3Portal de Livros Abertos da USP  "}
@@ -112,10 +152,14 @@
         <b>100=</b>{$umZeroZero}<br>
         <b>245=</b>{$doisQuatroCinco}<br>
         <b>260=</b>{$doisMeiaZero}<br>
-        
         <b>490=</b>{$quatroNoveZero}<br>
-        
         <b>500=</b>{$cincoZeroZero}<br>
+
+{if $additionalAuthorsExport}
+    
+    <b>700=</b>{$additionalAuthorsExport|escape}<br>
+    
+{/if}
         <b>856=</b>{$oitoCincoMeiaA}<br>
         <b>856=</b>{$oitoCincoMeiaB}<br>
         <b>945=</b>{$noveQuatroCinco}<br>
@@ -130,7 +174,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var downloadButton = document.getElementById('downloadButton');
         downloadButton.addEventListener('click', function() {
-var text = "{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";
+var text = "{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$additionalAuthorsExport|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";
             var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
 
             var blob = new Blob([text], { type: 'text/plain' });
