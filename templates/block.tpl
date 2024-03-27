@@ -9,8 +9,7 @@
 
 <b>
 
-{$publication->getData('pub-id::publisher-id')}
-
+{$publication->getData('submissionId')}<br>
 
 
 
@@ -212,20 +211,79 @@
    
     {assign var="oitoCincoMeiaA" value="4 zClicar sobre o botão para acesso ao texto completouhttps://doi.org/{$publication->getStoredPubId('doi')|escape}3DOI"}
 
-
-
-
     {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouLINK PDF3Portal de Livros Abertos da USP  "}
-
-
-
-
-
 
     {assign var="noveQuatroCinco" value="aPbMONOGRAFIA/LIVROc06j2023lNACIONAL"}
     
- 
-{* Chamando a informação*}
+
+
+{assign var="ldr" value="01131nam 22000241a 4500 "} 
+
+{* Calculando o comprimento da variável $rec005 *}
+{assign var="rec005POS" value=0}
+{assign var="rec005CAR" value=sprintf('%04d', strlen($zeroZeroCinco) + $rec005POS)}
+{assign var="rec005" value="005"|cat:$rec005CAR|cat:sprintf('%05d', $rec005POS)}
+
+{* Calculando o comprimento da variável $rec008 *}
+{assign var="rec008POS" value=0}
+{assign var="rec008CAR" value=sprintf('%04d', strlen($zeroZeroOito) + 0)}
+{assign var="rec008" value="008"|cat:$rec008CAR|cat:sprintf('%05d', $rec008POS + $rec005CAR)}
+
+{* Calculando o comprimento da variável $rec020 *}
+{assign var="rec020POS" value=$rec008CAR + $rec008POS}
+{assign var="rec020CAR" value=sprintf('%04d', strlen($zeroDoisZero) - 3)}
+{assign var="rec020" value="020"|cat:$rec020CAR|cat:sprintf('%05d', $rec020POS)}
+
+{* Calculando o comprimento da variável $rec024 *}
+{assign var="rec024POS" value=$rec020CAR + $rec020POS}
+{assign var="rec024CAR" value=sprintf('%04d', strlen($zeroDoisQuatro) + 3)}
+{assign var="rec024" value="024"|cat:$rec024CAR|cat:sprintf('%05d', $rec024POS)}
+
+{* Calculando o comprimento da variável $rec040 *}
+{assign var="rec040POS" value=$rec024CAR + $rec024POS}
+{assign var="rec040CAR" value=sprintf('%04d', strlen($zeroQuatroZero) - 3)}
+{assign var="rec040" value="040"|cat:$rec040CAR|cat:sprintf('%05d', $rec040POS)}
+
+{* Calculando o comprimento da variável $rec041 *}
+{assign var="rec041POS" value=$rec040CAR + $rec040POS}
+{assign var="rec041CAR" value=sprintf('%04d', strlen($zeroQuatroUm) + 0)}
+{assign var="rec041" value="041"|cat:$rec041CAR|cat:sprintf('%05d', $rec041POS)}
+
+{* Calculando o comprimento da variável $rec044 *}
+{assign var="rec044POS" value=$rec041CAR + $rec041POS}
+{assign var="rec044CAR" value=sprintf('%04d', strlen($zeroQuatroQuatro) + 0)}
+{assign var="rec044" value="044"|cat:$rec044CAR|cat:sprintf('%05d', $rec044POS)}
+
+{* Calculando o comprimento da variável $rec100 *}
+{assign var="rec100POS" value=$rec044CAR + $rec044POS}
+{assign var="rec100CAR" value=sprintf('%04d', strlen($umZeroZero) + 3)}
+{assign var="rec100" value="100"|cat:$rec100CAR|cat:sprintf('%05d', $rec100POS)}
+
+{* Calculando o comprimento da variável $rec245 *}
+{assign var="rec245POS" value=$rec100CAR + $rec100POS}
+{assign var="rec245CAR" value=sprintf('%04d', strlen($doisQuatroCinco) - 3)}
+{assign var="rec245" value="245"|cat:$rec245CAR|cat:sprintf('%05d', $rec245POS)}
+
+{* Chamando a informação numérica *}
+<hr>
+{$ldr}<br>
+{$rec005}<br>
+{$rec008}<br>
+{$rec020}<br>
+{$rec024}<br>
+{$rec040}<br>
+{$rec041}<br>
+{$rec044}<br>
+{$rec100}<br>
+{$rec245}<br>
+
+
+
+
+
+
+<hr>
+{* Chamando a informação de texto*}
         
         <b>005=</b>{$zeroZeroCinco}<br>
         <b>008=</b>{$zeroZeroOito}<br>
