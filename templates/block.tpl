@@ -155,18 +155,72 @@
 || $copyrightHolder == "Universidade de São Paulo. Museu Paulista "
 || $copyrightHolder == "Universidade de São Paulo. Museu de Zoologia"
 || $copyrightHolder == "Universidade de São Paulo. Museu de Zoologia "
-
  }
-
     {assign var="local" value="São Paulo"}
 
-{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto" || 
-    $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto"}
+{elseif $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia de Bauru"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia de Bauru "
+|| $copyrightHolder == "Universidade de São Paulo. Hospital de Reabilitação de Anomalias Craniofaciais"
+|| $copyrightHolder == "Universidade de São Paulo. Hospital de Reabilitação de Anomalias Craniofaciais "
+}
+    {assign var="local" value="Bauru"}
 
+{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Engenharia de Lorena"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Engenharia de Lorena "
+}
+    {assign var="local" value="Lorena"}
+
+{elseif $copyrightHolder == "Universidade de São Paulo. Centro de Energia Nuclear na Agricultura"
+|| $copyrightHolder == "Universidade de São Paulo. Centro de Energia Nuclear na Agricultura "
+|| $copyrightHolder == "Universidade de São Paulo. Escola Superior de Agricultura Luiz de Queiroz"
+|| $copyrightHolder == "Universidade de São Paulo. Escola Superior de Agricultura Luiz de Queiroz "
+}
+    {assign var="local" value="Piracicaba"}
+
+{elseif $copyrightHolder == "Universidade de São Paulo. Faculdade de Zootecnia e Engenharia de Alimentos"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Zootecnia e Engenharia de Alimentos "
+}
+    {assign var="local" value="Pirassununga"}
+
+{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Ciências Farmacêuticas de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Ciências Farmacêuticas de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Direito de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Direito de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Economia, Administração e Contabilidade de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Economia, Administração e Contabilidade de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Filosofia, Ciências e Letras de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Filosofia, Ciências e Letras de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina de Ribeirão Preto "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia de Ribeirão Preto"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia de Ribeirão Preto "
+}
     {assign var="local" value="Ribeirão Preto"}
-    
+
+{elseif $copyrightHolder == "Universidade de São Paulo. Departamento de Engenharia de Minas e Petróleo"
+|| $copyrightHolder == "Universidade de São Paulo. Departamento de Engenharia de Minas e Petróleo "
+}
+    {assign var="local" value="Santos"}
+
+{elseif $copyrightHolder == "Universidade de São Paulo.  Escola de Engenharia de São Carlos"
+|| $copyrightHolder == "Universidade de São Paulo.  Escola de Engenharia de São Carlos "
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Arquitetura e Urbanismo"
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Arquitetura e Urbanismo "
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Ciências Matemáticas e de Computação"
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Ciências Matemáticas e de Computação "
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Física de São Carlos"
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Física de São Carlos "
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Química de São Carlos"
+|| $copyrightHolder == "Universidade de São Paulo.  Instituto de Química de São Carlos "
+}
+    {assign var="local" value="São Carlos"}
+
 {else}
-    {assign var="local" value="cIdAdE"}
+    {assign var="local" value=""}
 {/if}
 
 {assign var="holder" value=$publication->getLocalizedData('copyrightHolder')}
