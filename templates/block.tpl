@@ -83,6 +83,9 @@
     {assign var="doisQuatroCinco" value="10a{$publication->getLocalizedFullTitle()|escape}h[recurso eletrônico]  "}
 
 
+
+
+
 {assign var="copyrightHolder" value=$publication->getLocalizedData('copyrightHolder')}
 {assign var="local" value="LOCAL"} 
 
@@ -96,7 +99,7 @@
 
 {assign var="holder" value=$publication->getLocalizedData('copyrightHolder')}
 {if $holder|strstr:'Universidade de São Paulo. '}
-    {assign var="holder" value=$holder|replace:'Universidade de São Paulo. ':' '}
+    {assign var="holder" value=$holder|replace:'Universidade de São Paulo. ':''}
 {/if}
 
 {assign var="doisMeiaZero" value="a {$local}b{$holder}c{$publication->getData('copyrightYear')}0 "}
