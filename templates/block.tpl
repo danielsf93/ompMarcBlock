@@ -118,9 +118,7 @@
 
     {assign var="authorExportString" value="$authorExportString4org"} 
 
-    {if $affiliation}
-        {assign var="authorExportString" value="$authorExportString8{$affiliation}"} 
-    {/if}
+    
 
     {assign var="additionalAuthorsExport" value="$additionalAuthorsExport$authorExportString"} 
 {/foreach}
