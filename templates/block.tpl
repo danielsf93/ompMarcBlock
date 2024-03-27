@@ -82,15 +82,34 @@
 
     {assign var="doisQuatroCinco" value="10a{$publication->getLocalizedFullTitle()|escape}h[recurso eletrônico]  "}
 
-    {assign var="doisMeiaZero" value="a LOCALb{$publication->getLocalizedData('copyrightHolder')}c{$publication->getData('copyrightYear')}0 "}
+
+{assign var="copyrightHolder" value=$publication->getLocalizedData('copyrightHolder')}
+{assign var="local" value="LOCAL"} 
+
+{if $copyrightHolder == "Universidade de São Paulo. Instituto de Astronomia, Geofísica e Ciências Atmosféricas " || $copyrightHolder == "Universidade de São Paulo. Escola de Comunicações e Artes"}
+    {assign var="local" value="São Paulo"}
+{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto" || $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto"}
+    {assign var="local" value="Ribeirão Preto"}
+{else}
+    {assign var="local" value="cIdAdE"}
+{/if}
+
+{assign var="holder" value=$publication->getLocalizedData('copyrightHolder')}
+{if $holder|strstr:'Universidade de São Paulo. '}
+    {assign var="holder" value=$holder|replace:'Universidade de São Paulo. ':' '}
+{/if}
+
+{assign var="doisMeiaZero" value="a {$local}b{$holder}c{$publication->getData('copyrightYear')}0 "}
+
+
+
+
+
+
 
     {assign var="quatroNoveZero" value="{if $series}a {$series->getLocalizedFullTitle()}v {$publication->getData('seriesPosition')}{/if}  "}
 
     {assign var="cincoZeroZero" value="aDisponível em: http://{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
-
-        
-
-
 
 {* Demais autores *}
 {assign var="additionalAuthors" value=[]}
@@ -118,19 +137,9 @@
 
     {assign var="authorExportString" value="$authorExportString4org"} 
 
-    
-
     {assign var="additionalAuthorsExport" value="$additionalAuthorsExport$authorExportString"} 
 {/foreach}
-
-
-
-
-
-
-
-
-    
+   
     {assign var="oitoCincoMeiaA" value="4 zClicar sobre o botão para acesso ao texto completouhttps://doi.org/{$publication->getStoredPubId('doi')|escape}3DOI"}
 
     {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouLINK PDF3Portal de Livros Abertos da USP  "}
