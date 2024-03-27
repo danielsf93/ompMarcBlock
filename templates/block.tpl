@@ -52,15 +52,13 @@
 
 
 
-
-{* Obter Primeiro Autor *}
      {* Obter Primeiro Autor *}
 {assign var="authors" value=$publication->getData('authors')}
 {if $authors|@count > 0}
     {assign var="firstAuthor" value=$authors[0]}
     {assign var="givenName" value=$firstAuthor->getLocalizedGivenName()|escape}
     {assign var="surname" value=$firstAuthor->getLocalizedFamilyName()|escape}
-    {assign var="orcid" value=$firstAuthor->getOrcid()|default:'OrCiD'}
+    {assign var="orcid" value=$firstAuthor->getOrcid()|default:''}
     {assign var="affiliation" value=$firstAuthor->getLocalizedAffiliation()|default:''}
     {assign var="locale" value=$firstAuthor->getCountryLocalized()|escape}
 
