@@ -85,14 +85,86 @@
 
 
 
-
+{* Obter Cidade pelo Copyright *}
 {assign var="copyrightHolder" value=$publication->getLocalizedData('copyrightHolder')}
 {assign var="local" value="LOCAL"} 
 
-{if $copyrightHolder == "Universidade de São Paulo. Instituto de Astronomia, Geofísica e Ciências Atmosféricas " || $copyrightHolder == "Universidade de São Paulo. Escola de Comunicações e Artes"}
+{if $copyrightHolder == "Universidade de São Paulo. Escola de Artes, Ciências e Humanidades"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Artes, Ciências e Humanidades "
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Comunicações e Artes"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Comunicações e Artes "
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte "
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem"
+|| $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem "
+|| $copyrightHolder == "Universidade de São Paulo. Escola Politécnica"
+|| $copyrightHolder == "Universidade de São Paulo. Escola Politécnica "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Arquitetura e Urbanismo"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Arquitetura e Urbanismo "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Ciências Farmacêuticas"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Ciências Farmacêuticas "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Direito"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Direito "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Economia, Administração e Contabilidade"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Economia, Administração e Contabilidade "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Educação"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Educação "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Filosofia, Letras e Ciências Humanas"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Filosofia, Letras e Ciências Humanas "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina Veterinária e Zootecnia"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Medicina Veterinária e Zootecnia "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Odontologia "
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Saúde Pública"
+|| $copyrightHolder == "Universidade de São Paulo. Faculdade de Saúde Pública "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Astronomia, Geofísica e Ciências Atmosféricas"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Astronomia, Geofísica e Ciências Atmosféricas "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Biociências"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Biociências "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Ciências Biomédicas"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Ciências Biomédicas "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Energia e Ambiente"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Energia e Ambiente "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Estudos Avançados"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Estudos Avançados "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Estudos Brasileiros"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Estudos Brasileiros "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Física"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Física "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Geociências"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Geociências "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Matemática e Estatística"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Matemática e Estatística "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Medicina Tropical de São Paulo"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Medicina Tropical de São Paulo "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Psicologia"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Psicologia "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Química"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Química "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Relações Internacionais"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto de Relações Internacionais "
+|| $copyrightHolder == "Universidade de São Paulo. Instituto Oceanográfico"
+|| $copyrightHolder == "Universidade de São Paulo. Instituto Oceanográfico "
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Arqueologia e Etnografia"
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Arqueologia e Etnografia "
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Arte Contemporânea"
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Arte Contemporânea "
+|| $copyrightHolder == "Universidade de São Paulo. Museu Paulista"
+|| $copyrightHolder == "Universidade de São Paulo. Museu Paulista "
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Zoologia"
+|| $copyrightHolder == "Universidade de São Paulo. Museu de Zoologia "
+
+ }
+
     {assign var="local" value="São Paulo"}
-{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto" || $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto"}
+
+{elseif $copyrightHolder == "Universidade de São Paulo. Escola de Educação Física e Esporte de Ribeirão Preto" || 
+    $copyrightHolder == "Universidade de São Paulo. Escola de Enfermagem de Ribeirão Preto"}
+
     {assign var="local" value="Ribeirão Preto"}
+    
 {else}
     {assign var="local" value="cIdAdE"}
 {/if}
