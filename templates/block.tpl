@@ -325,6 +325,9 @@
     {assign var="rec700All" value=$rec700All|cat:$rec700} 
 {/foreach}
 
+{assign var="rec700All" value=str_replace(" ", "", $rec700All)}
+
+
 {assign var="rec856APOS" value=sprintf('%05d', $rec500CAR + $rec500POS)}
 {assign var="rec856ACAR" value=sprintf('%04d', strlen($oitoCincoMeiaA) - 1)}
 
@@ -344,15 +347,67 @@
 {assign var="rec945" value="945"|cat:$rec945CAR|cat:$rec945POS - 3}
 
 
+{* Chamando a informação numérica para printar na tela*}
+<hr>
+{$ldr}<br>
+{$rec005}<br>
+{$rec008}<br>
+{$rec020}<br>
+{$rec024}<br>
+{$rec040}<br>
+{$rec041}<br>
+{$rec044}<br>
+{$rec100}<br>
+{$rec245}<br>
+{$rec260}<br>
+{$rec490}<br>
+{$rec500}<br>
+{$rec700All}<br>
+{$rec856A}<br>
+{$rec856B}<br>
+{$rec945}<br>
+
+
+<hr>
+{* Chamando a informação de texto para printar na tela*}
+        
+        <b>005=</b>{$zeroZeroCinco}<br>
+        <b>008=</b>{$zeroZeroOito}<br>
+        <b>020=</b>{$zeroDoisZero}<br>
+        <b>024=</b>{$zeroDoisQuatro}<br>
+        <b>040=</b>{$zeroQuatroZero}<br>
+        <b>041=</b>{$zeroQuatroUm}<br>
+        <b>044=</b>{$zeroQuatroQuatro}<br>
+        <b>100=</b>{$umZeroZero}<br>
+        <b>245=</b>{$doisQuatroCinco}<br>
+        <b>260=</b>{$doisMeiaZero}<br>
+        <b>490=</b>{$quatroNoveZero}<br>
+        <b>500=</b>{$cincoZeroZero}<br>
+
+{if $additionalAuthorsExport}
+    
+    <b>700=</b>{$additionalAuthorsExport|escape}<br>
+    
+{/if}
+        <b>856=</b>{$oitoCincoMeiaA}<br>
+        <b>856=</b>{$oitoCincoMeiaB}<br>
+        <b>945=</b>{$noveQuatroCinco}<br>
+
+<hr>
+
   
     <button id="downloadButton" class="botao">Baixar Arquivo MARC</button>
 
+
+{assign var="numAutoresAdicionais" value=$additionalAuthors|count}
+{assign var="totalautores" value=22000205+($numAutoresAdicionais*12)}
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var downloadButton = document.getElementById('downloadButton');
         downloadButton.addEventListener('click', function() {
-var text = "00972nam 22000205a 4500 {$rec005|escape:'javascript'}{$rec008|escape:'javascript'}{$rec020|escape:'javascript'}{$rec024|escape:'javascript'}{$rec040|escape:'javascript'}{$rec041|escape:'javascript'}{$rec044|escape:'javascript'}{$rec100|escape:'javascript'}{$rec245|escape:'javascript'}{$rec260|escape:'javascript'}{$rec490|escape:'javascript'}{$rec500|escape:'javascript'}{$rec700All|escape:'javascript'}{$rec856A|escape:'javascript'}{$rec856B|escape:'javascript'}{$rec945|escape:'javascript'}{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$additionalAuthorsExport|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";            var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
+            var text = "00972nam {$totalautores}a 4500 {$rec005|escape:'javascript'}{$rec008|escape:'javascript'}{$rec020|escape:'javascript'}{$rec024|escape:'javascript'}{$rec040|escape:'javascript'}{$rec041|escape:'javascript'}{$rec044|escape:'javascript'}{$rec100|escape:'javascript'}{$rec245|escape:'javascript'}{$rec260|escape:'javascript'}{$rec490|escape:'javascript'}{$rec500|escape:'javascript'}{$rec700All|escape:'javascript'}{$rec856A|escape:'javascript'}{$rec856B|escape:'javascript'}{$rec945|escape:'javascript'}{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$additionalAuthorsExport|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";
+            var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
 
             var blob = new Blob([text], { type: 'text/plain' });
             if (window.navigator.msSaveOrOpenBlob) {
@@ -368,6 +423,7 @@ var text = "00972nam 22000205a 4500 {$rec005|escape:'javascript'}{$rec008|escape
         });
     });
 </script>
+
 
 </div>
 
