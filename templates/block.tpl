@@ -38,7 +38,7 @@
 
     {assign var="zeroZeroOito" value="      s2023    bl            000 0 por d"}
 
-    {assign var="zeroDoisZero" value="  a{if $isbn|trim}{$isbn}{else}iSbN{/if}7 "}
+    {assign var="zeroDoisZero" value="  a{if $isbn|trim}{$isbn}{else}{/if}7 "}
         
     {assign var="zeroDoisQuatro" value="a{$publication->getStoredPubId('doi')|escape}2DOI"}
 
@@ -176,7 +176,27 @@
 
 {assign var="doisMeiaZero" value="a {$local}b{$holder}c{$publication->getData('copyrightYear')}0 "}
 
-    {assign var="quatroNoveZero" value="{if $series}a {$series->getLocalizedFullTitle()}v {$publication->getData('seriesPosition')}{/if}  "}
+{assign var="quatroNoveZero" value=""}
+{if $series}
+    {assign var="seriesTitle" value=$series->getLocalizedFullTitle()}
+    {if $seriesTitle}
+        {assign var="quatroNoveZero" value="a {$seriesTitle}"}
+    {/if}
+{else}
+    {assign var="quatroNoveZero" value="a "}
+{/if}
+
+{if $publication->getData('seriesPosition')}
+    {assign var="quatroNoveZero" value=$quatroNoveZero|cat:"v {$publication->getData('seriesPosition')}"}
+{else}
+    {assign var="quatroNoveZero" value=$quatroNoveZero|cat:"v "}
+{/if}
+
+{assign var="quatroNoveZero" value=$quatroNoveZero|cat:"  "}
+
+
+
+
 
     {assign var="cincoZeroZero" value="aDisponível em: http://{$smarty.server.HTTP_HOST}{$smarty.server.REQUEST_URI}. Acesso em: {$smarty.now|date_format:"%d.%m.%Y"}"}
 
@@ -227,7 +247,7 @@
 {* Calculando o comprimento da variável $rec008 *}
 {assign var="rec008POS" value=$rec005CAR + $rec005POS}
 {assign var="rec008CAR" value=sprintf('%04d', strlen($zeroZeroOito) + 0)}
-{assign var="rec008" value="008"|cat:$rec008CAR|cat:sprintf('%05d', $rec008POS + $rec005CAR)}
+{assign var="rec008" value="008"|cat:$rec008CAR|cat:sprintf('%05d', $rec008POS)}
 
 {* Calculando o comprimento da variável $rec020 *}
 {assign var="rec020POS" value=$rec008CAR + $rec008POS}
@@ -268,14 +288,9 @@
 {assign var="rec260CAR" value=sprintf('%04d', strlen($doisMeiaZero) + 0)}
 {assign var="rec260" value="260"|cat:$rec260CAR|cat:sprintf('%05d', $rec260POS)}
 
-
-
-
-
 {assign var="rec490POS" value=$rec260CAR + $rec260POS}
 {assign var="rec490CAR" value=sprintf('%04d', strlen($quatroNoveZero) + 3)}
 {assign var="rec490" value="490"|cat:$rec490CAR|cat:sprintf('%05d', $rec490POS)}
-
 
 {assign var="rec500POS" value=$rec490CAR + $rec490POS}
 {assign var="rec500CAR" value=sprintf('%04d', strlen($cincoZeroZero) + 3)}
@@ -303,8 +318,10 @@
 {$rec260}<br>
 {$rec490}<br>
 {$rec500}<br>
-
-
+{$rec700}<br>
+{$rec856a}<br>
+{$rec856b}<br>
+{$rec945}<br>
 
 <hr>
 {* Chamando a informação de texto*}
