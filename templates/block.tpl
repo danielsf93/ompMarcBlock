@@ -297,11 +297,33 @@
 {assign var="rec500" value="500"|cat:$rec500CAR|cat:sprintf('%05d', $rec500POS - 3)}
 
 
+{assign var="numAutoresAdicionais" value=count($additionalAuthors)}
+{assign var="rec700All" value=''} 
 
+{foreach $additionalAuthors as $additionalAuthor}
+    {assign var="rec700" value=''} 
+    
+    {assign var="rec700POS" value=sprintf('%05d', $rec500CAR + $rec500POS)}
+    
+    {assign var="seteZeroZero" value="1 a{$additionalAuthor->getLocalizedFamilyName()|escape}, {$additionalAuthor->getLocalizedGivenName()|escape}"}
 
+    {if $additionalAuthor->getOrcid()}
+        {assign var="seteZeroZero" value="$seteZeroZero0{$additionalAuthor->getOrcid()}"} 
+    {else}
+        {assign var="seteZeroZero" value="$seteZeroZero0 "} 
+    {/if}
 
+    {assign var="seteZeroZero" value="$seteZeroZero4org"}
 
+    {assign var="rec700CAR" value=sprintf('%04d', strlen($seteZeroZero))}
 
+    {assign var="rec700" value=$rec700|cat:"700"|cat:$rec700CAR|cat:$rec700POS - 3|cat:$seteZeroZero|cat:"  "}
+    
+    {assign var="rec500POS" value=$rec700POS}
+    {assign var="rec500CAR" value=$rec700CAR}
+    
+    {assign var="rec700All" value=$rec700All|cat:$rec700} 
+{/foreach}
 
 {* Chamando a informação numérica *}
 <hr>
@@ -318,10 +340,14 @@
 {$rec260}<br>
 {$rec490}<br>
 {$rec500}<br>
-{$rec700}<br>
+
+{* Exibindo rec700 aqui *}
+{$rec700All}
+
 {$rec856a}<br>
 {$rec856b}<br>
 {$rec945}<br>
+
 
 <hr>
 {* Chamando a informação de texto*}
