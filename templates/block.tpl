@@ -325,6 +325,25 @@
     {assign var="rec700All" value=$rec700All|cat:$rec700} 
 {/foreach}
 
+{assign var="rec856APOS" value=sprintf('%05d', $rec500CAR + $rec500POS)}
+{assign var="rec856ACAR" value=sprintf('%04d', strlen($oitoCincoMeiaA) - 1)}
+
+{if $numAutoresAdicionais > 0}
+    {assign var="rec856APOS" value=sprintf('%05d', $rec700CAR + $rec700POS)}
+    {assign var="rec856ACAR" value=sprintf('%04d', strlen($oitoCincoMeiaA) - 1)}
+{/if}
+
+{assign var="rec856A" value="856"|cat:$rec856ACAR|cat:$rec856APOS - 3}
+
+{assign var="rec856BPOS" value=sprintf('%05d', $rec856ACAR + $rec856APOS)}
+{assign var="rec856BCAR" value=sprintf('%04d', strlen($oitoCincoMeiaB) - 2)}
+{assign var="rec856B" value="856"|cat:$rec856BCAR|cat:$rec856BPOS - 3}
+
+{assign var="rec945POS" value=sprintf('%05d', $rec856BCAR + $rec856BPOS)}
+{assign var="rec945CAR" value=sprintf('%04d', strlen($noveQuatroCinco) + 1)}
+{assign var="rec945" value="945"|cat:$rec945CAR|cat:$rec945POS - 3}
+
+
 {* Chamando a informação numérica *}
 <hr>
 {$ldr}<br>
@@ -342,10 +361,12 @@
 {$rec500}<br>
 
 {* Exibindo rec700 aqui *}
-{$rec700All}
+{$rec700All}<br>
 
-{$rec856a}<br>
-{$rec856b}<br>
+{* Exibindo rec856a *}
+{$rec856A}<br>
+
+{$rec856B}<br>
 {$rec945}<br>
 
 
