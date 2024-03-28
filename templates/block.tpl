@@ -225,7 +225,7 @@
 {assign var="rec005" value="005"|cat:$rec005CAR|cat:sprintf('%05d', $rec005POS)}
 
 {* Calculando o comprimento da variável $rec008 *}
-{assign var="rec008POS" value=0}
+{assign var="rec008POS" value=$rec005CAR + $rec005POS}
 {assign var="rec008CAR" value=sprintf('%04d', strlen($zeroZeroOito) + 0)}
 {assign var="rec008" value="008"|cat:$rec008CAR|cat:sprintf('%05d', $rec008POS + $rec005CAR)}
 
@@ -264,6 +264,30 @@
 {assign var="rec245CAR" value=sprintf('%04d', strlen($doisQuatroCinco) - 3)}
 {assign var="rec245" value="245"|cat:$rec245CAR|cat:sprintf('%05d', $rec245POS)}
 
+{assign var="rec260POS" value=$rec245CAR + $rec245POS}
+{assign var="rec260CAR" value=sprintf('%04d', strlen($doisMeiaZero) + 0)}
+{assign var="rec260" value="260"|cat:$rec260CAR|cat:sprintf('%05d', $rec260POS)}
+
+
+
+
+
+{assign var="rec490POS" value=$rec260CAR + $rec260POS}
+{assign var="rec490CAR" value=sprintf('%04d', strlen($quatroNoveZero) + 3)}
+{assign var="rec490" value="490"|cat:$rec490CAR|cat:sprintf('%05d', $rec490POS)}
+
+
+{assign var="rec500POS" value=$rec490CAR + $rec490POS}
+{assign var="rec500CAR" value=sprintf('%04d', strlen($cincoZeroZero) + 3)}
+{assign var="rec500" value="500"|cat:$rec500CAR|cat:sprintf('%05d', $rec500POS - 3)}
+
+
+
+
+
+
+
+
 {* Chamando a informação numérica *}
 <hr>
 {$ldr}<br>
@@ -276,9 +300,9 @@
 {$rec044}<br>
 {$rec100}<br>
 {$rec245}<br>
-
-
-
+{$rec260}<br>
+{$rec490}<br>
+{$rec500}<br>
 
 
 
