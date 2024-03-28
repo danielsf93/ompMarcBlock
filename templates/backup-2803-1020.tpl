@@ -344,6 +344,54 @@
 {assign var="rec945" value="945"|cat:$rec945CAR|cat:$rec945POS - 3}
 
 
+{* Chamando a informação numérica para printar na tela*}
+<hr>
+{$ldr}<br>
+{$rec005}<br>
+{$rec008}<br>
+{$rec020}<br>
+{$rec024}<br>
+{$rec040}<br>
+{$rec041}<br>
+{$rec044}<br>
+{$rec100}<br>
+{$rec245}<br>
+{$rec260}<br>
+{$rec490}<br>
+{$rec500}<br>
+{$rec700All}<br>
+{$rec856A}<br>
+{$rec856B}<br>
+{$rec945}<br>
+
+
+<hr>
+{* Chamando a informação de texto para printar na tela*}
+        
+        <b>005=</b>{$zeroZeroCinco}<br>
+        <b>008=</b>{$zeroZeroOito}<br>
+        <b>020=</b>{$zeroDoisZero}<br>
+        <b>024=</b>{$zeroDoisQuatro}<br>
+        <b>040=</b>{$zeroQuatroZero}<br>
+        <b>041=</b>{$zeroQuatroUm}<br>
+        <b>044=</b>{$zeroQuatroQuatro}<br>
+        <b>100=</b>{$umZeroZero}<br>
+        <b>245=</b>{$doisQuatroCinco}<br>
+        <b>260=</b>{$doisMeiaZero}<br>
+        <b>490=</b>{$quatroNoveZero}<br>
+        <b>500=</b>{$cincoZeroZero}<br>
+
+{if $additionalAuthorsExport}
+    
+    <b>700=</b>{$additionalAuthorsExport|escape}<br>
+    
+{/if}
+        <b>856=</b>{$oitoCincoMeiaA}<br>
+        <b>856=</b>{$oitoCincoMeiaB}<br>
+        <b>945=</b>{$noveQuatroCinco}<br>
+
+<hr>
+
   
     <button id="downloadButton" class="botao">Baixar Arquivo MARC</button>
 
