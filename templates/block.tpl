@@ -231,7 +231,7 @@
    
     {assign var="oitoCincoMeiaA" value="4 zClicar sobre o botão para acesso ao texto completouhttps://doi.org/{$publication->getStoredPubId('doi')|escape}3DOI"}
 
-    {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouLINK PDF3Portal de Livros Abertos da USP  "}
+    {assign var="oitoCincoMeiaB" value="41zClicar sobre o botão para acesso ao texto completouhttp://0.0.0.0:8888/index.php/portaldelivrosUSP/catalog/view/8/8/433Portal de Livros Abertos da USP  "}
 
     {assign var="noveQuatroCinco" value="aPbMONOGRAFIA/LIVROc06j2023lNACIONAL"}
     
@@ -344,7 +344,7 @@
 {assign var="rec945" value="945"|cat:$rec945CAR|cat:$rec945POS - 3}
 
 
-{* Chamando a informação numérica *}
+{* Chamando a informação numérica para printar na tela*}
 <hr>
 {$ldr}<br>
 {$rec005}<br>
@@ -359,19 +359,14 @@
 {$rec260}<br>
 {$rec490}<br>
 {$rec500}<br>
-
-{* Exibindo rec700 aqui *}
 {$rec700All}<br>
-
-{* Exibindo rec856a *}
 {$rec856A}<br>
-
 {$rec856B}<br>
 {$rec945}<br>
 
 
 <hr>
-{* Chamando a informação de texto*}
+{* Chamando a informação de texto para printar na tela*}
         
         <b>005=</b>{$zeroZeroCinco}<br>
         <b>008=</b>{$zeroZeroOito}<br>
@@ -405,8 +400,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var downloadButton = document.getElementById('downloadButton');
         downloadButton.addEventListener('click', function() {
-var text = "{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$additionalAuthorsExport|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";
-            var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
+var text = "00972nam 22000205a 4500 {$rec005|escape:'javascript'}{$rec008|escape:'javascript'}{$rec020|escape:'javascript'}{$rec024|escape:'javascript'}{$rec040|escape:'javascript'}{$rec041|escape:'javascript'}{$rec044|escape:'javascript'}{$rec100|escape:'javascript'}{$rec245|escape:'javascript'}{$rec260|escape:'javascript'}{$rec490|escape:'javascript'}{$rec500|escape:'javascript'}{$rec700All|escape:'javascript'}{$rec856A|escape:'javascript'}{$rec856B|escape:'javascript'}{$rec945|escape:'javascript'}{$zeroZeroCinco|escape:'javascript'}{$zeroZeroOito|escape:'javascript'}{$zeroDoisZero|escape:'javascript'}{$zeroDoisQuatro|escape:'javascript'}{$zeroQuatroZero|escape:'javascript'}{$zeroQuatroUm|escape:'javascript'}{$zeroQuatroQuatro|escape:'javascript'}{$umZeroZero|escape:'javascript'}{$doisQuatroCinco|escape:'javascript'}{$doisMeiaZero|escape:'javascript'}{$quatroNoveZero|escape:'javascript'}{$cincoZeroZero|escape:'javascript'}{$additionalAuthorsExport|escape:'javascript'}{$oitoCincoMeiaA|escape:'javascript'}{$oitoCincoMeiaB|escape:'javascript'}{$noveQuatroCinco|escape:'javascript'}";            var fileName = 'ompBlock.mrc'; // Nome do arquivo a ser baixado
 
             var blob = new Blob([text], { type: 'text/plain' });
             if (window.navigator.msSaveOrOpenBlob) {
